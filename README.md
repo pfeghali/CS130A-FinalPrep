@@ -12,15 +12,49 @@ Please email me if you'd like something updated or changed.
 ---
 # Data Structures and Algorithms
 ## What is a data structure?
+A data strcuture is some sort of form which holds data in a (usually) intelligent manner. DS allow for optimized operations on data, and usually are built to have strong bounds on worst case complexity. DS are fundementally important to CS, since the movement, access, analysis, and computation based on data is a lot of what CS is.
 ## Worst case bounding (BigO)
+When we're building a data strucutre, we want to have strcutures which allow for fast operations with millions of elements. We can analyze how something will scale using BigO analysis.  
+For example, consider: ![equation](https://latex.codecogs.com/gif.latex?10x^2&plus;5x-34\rightarrow&space;O(N^2)). With BigO analsis we ignore all extranneous coeffecients, and just argue that the function scales according to N^2.
+### What about Big\omega?
+Big\omega is a representation of the lower bound of a function as N approaches infinity. We can also consider BigO as the upper bound of such a function as N approaches infinity. This usually is not very interesting.
+### And Big\theta?
+This one is pretty interesting. Big\theta represents some sort of a function that not only represents the upper bound of the algorithm, but also the lower bound. Note, in all of these cases, we care about the general form, and are assuming that there is some sort of coeffecient which is then being multiplied to said functions. Big\theta notation is present when functions such as mergesort come into play. No matter how the algorithm runs, mergesort obeys a consistent set of operations and therefore we can claim that it runs in a Big\theta sort of way.
 ## Space Complexities
+You have a program that's running, and it needs to store data while running. How much does it need (other than the input)? Does it need to store extraneous data for each element? O(N). Does it need to store linkage information between every single element and every other element in the input? O(N^2).
 ## Useful series expansions
 ## Useful complexities
-![equation](https://latex.codecogs.com/gif.latex?10x)
+<!-- ![equation](https://latex.codecogs.com/gif.latex?10x)-->
 # Hashing
+Hashing is one of the most useful processes in Computer Science. Need to sort an arbitarily long string of input? Or how about find a substring in O(N)? Store tons of user data easily? Hashtables are generally just great ways to manipulate, store, and interact with data. They're not perfect though.
+Just as a general note, picking a relatively prime table size is usually optimal.
 ## Dictionaries
+A dictionary is simply a DS which stores key-value pairs. A key being some sort of accessor, and the value being the value/meaning associated with said accessor. For language, this is a dictionary. Words are the keys, and defintions are the values. 
 ## Hash table operations
+Hash tables support a number of common operations in (near) O(1) time:
+1. Lookup
+2. Insert
+3. Delete
+
+So we have a thing that can do these operations, technically, all the operations are worst case O(n) using non-perfect hashing. Albeit, most of the time, these operations are O(1).
+
 ## Collisions & Resolving them
+Let's say we hash one thing using a hash function to a certail slot. Due to the pigeonhole principle (n pigeons, n - x slots, more than 1 pigeon must be in at least 1 slot), we will have collisions. How can we deal with this redundancy?
+### Probing
+Probing is a method of dealing with collisions by moving a number of spaces from a collision. Let us imagine that a collision occurs at a position of 5, with linear probing, we'd continue to check for any free spots following according to some sort of rule. With linear probing, check every n spots, quadratic probing check h(x) + 1, then h(x) + 4, etc...
+### Double Hashing
+Double hashing has a similair approach to probing, but rather than probing based off of some sort of a defined rule, probe based on a secondary hash function. Not going to go into this.
+### Problems with previous approaches
+These previous approaches really suck due to 
+1. Deletion
+2. Size management
+
+#### Deletion
+Deletion is a massive problem with the previous two tables. If we insert 3 elements which all hash to slot i, then delete the 2nd element, we have an element at position z which is now harder to reach. To get from i to z, we must take into consideration that the 2nd element's slot had an element in it at some point, which makes searching within the table a serious problem.
+#### Size management
+With this table approach, ourtable size can reach a maximum. If the table fills, finding a free spot can be hard, and if one is not available, a heurestic must be designed to deal with this constraint. If a slot is not available, common techniques are to increase the table size to the next available prime, then reinsert every element back into said table. This is simply ineffecient, and a pain to have to deal with.
+### Chained Hashing
+Chained hashing attempts to solve these problems by accepting collisions and just adding elements to the end of some sort of a list as they collide. This approach allows for elemeents to be easily inserted without worrying about trying to find a valid slot. This approach isn't perfect, as if n eleents all hash to slot i, then access is O(N). Albeit, same issue as the other approaches, but now we can make insert consistently O(1).
 ## Choosing a hash function
 ## Randomization
 ## Universal hash functions
