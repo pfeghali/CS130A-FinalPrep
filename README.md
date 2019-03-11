@@ -65,23 +65,64 @@ These hash functions can be proven to have collisions at a rate of 1/M, with M b
 ## Matrix method
 Rather than choosing integer coeffecients, we can also choose a random binary matrix, of size b\*u, with b being the coeffecient of the table size (M = 2^b) and u being the number of bits in the input. This method s similar to the last, where we take this new hash 'function' and is of the same linearly multiplicative form.
 ## Birthday paradox (in a lazy form)
+What's the likelihood we get a collision in a hash table? Pretty much the same question as asking if we hae n people in a room, what is the likelihood two people have the same birthday? Turns out there's a high probability. For the second person 1/365, then assuming no collision, 2/365, 3/365, etc...
+### Stirling's approximation
+![equation](https://wikimedia.org/api/rest_v1/media/math/render/svg/7fe20ccef4b13b2fc2b79b752fb595da6d855de2)
 ## Perfect hashing
+So hash tables aren't perfect, we don't get O(1) access all the time. How can we fix that? Perfect hashing is a method built on essentially just having a hashtable of hashtables, and if any one gets too full, rehash it. Proven to be O(1).
+1. Hash keys using universal hashing, table of size n.
+2. Very likely this will produce some collisions. 
+3. Rehash each, but now with a quadratic size hash table.
+
+This may seem like a solution with N^2 space complexity, but it is a O(N) space solution.
+
 # Priority Queues
 ## Why?
+Sometimes we need to know what is next in some sort of an ordering. Imagine some sort of a scheduler, or trying to get the absolute minimum element from sort of continuously fed DS. Doesn't matter, what does matter, is that you have some set ordering rule, and you want to get the thing that obeys said rule the most in order.
 ## Available operations
+Always
+- `void insert(e)`
+- `e deleteMin()` / `e deleteMax()`
+
+Sometimes:
+- `increaseKey(e, amt)`
+- `decreaseKey(e, amt)`
+- `remove(e)`
+- `newQueue union(q1, q2)`
+
 ## How can we represent this?
+There are any number of ways we could implement such a structure, each with its own corresponding benefits and weaknesses.  
+We're going to focus on utilizing heaps.
 ## Heap-ordered binary trees
 ### ^?
+A heap-ordered binary tree is defined as a complete binary tree, with a single element per node, and is filled level by level, left to right. Since this is a binary-heap, any one node has a maximum of two children. Please note, such a heap does not obey the binary search tree property, rather, it obeys the heap property.
 ### Calculating the height
-### What is a 'complete tree'?
+The height can be calculated at any time as `O(log(N))`, with N being the number of nodes.
 ### Heap property
+Obeying the heap property requires that each node only has a single element, and each node's parent's key is less than its own key. In such a case, the root must always be the minimum element. We can create a tree with a different ordering property by changing the 'less than' to a 'greater than' or any extranneous ordering method. 
 ### Percolate Up
+Percolate up is an operation whch is used for both decreaseKey and insert.  
+`percolateUp()` continously swaps itself and its parent if its key is less than (or whatever ordering rule) than its parent. 
 ### Percolate Down
+Percolate down is an operation whch is used for both increaseKey and deleteMin.  
+`percolateDown()` continously swaps itself and its parent if its key is more than (or the inverse of whatever ordering rule) than its parent. 
+### DecreaseKey
+This function requires that you know where the element is, since there is no find.  
+Just decrease the element's key, then call PercolateUp.
+### IncreaseKey
+Same thing as above, just increase the key and call PercolateDown.
 ### Insert
+Add whatever element as a new leaf, then run percolateUp on the element.
 ### DeleteMin (or potentially max!)
+The element you are looking to delete is always going to be the root of the tree! That is the value of using such a structure. To delete an element, swap it with a leaf (usually the last leaf), then call percolateDown on the new root.
 ### Binary Heap -> Array Representation
+It is easy to look at some heap and visualize it as a tree, as we have nodes with children, but we can represent the whole structure in an array!  
+Why? This is beneficial since when we want to insert a new leaf, we can just go to the last elemenet in the array, then call percolateUp. Similairly for delete, we just need to swap the first element with the last, then percolateDown on the root.  
+We can use the rule that any node's parent is its own index/2, its left child is 2\*i, and its right is 2\*i+1.
 ## HeapSort
+We can use such a DS to sort elements. Take your input, and insert every element into the heap - O(n\*log(n)), then pop them all. *Magic!*
 ## Build Heap in O(N)
+Rather than constructing the tree in an arbitrary manner, start with a random array, start halfway through, and run to the root, running percolate down. This will build a heap in O(N)!
 # d-Heaps and Leftist Heaps
 ## What is a D-Heap?
 ### Operations
