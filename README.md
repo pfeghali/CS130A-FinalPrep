@@ -377,6 +377,18 @@ Given some start vertice, just add cheapest edges, and make sure there are no cy
 - "Object-oriented programming is an exceptionally bad idea which could only have originated in California."
 
 ### Algorithm
-Given arbitary non-negative edge weights.
+The algorithim is designed to be a shortest path first algorithm. It is commonly designed to be an effecient algo for finding the path between two nodes. The algorithm requires arbitary non-negative edge weights, and a strict weak ordering. I like the wikipedia explanation of the algorithm, the page is quite good: ![wikipedia djakastra](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Algorithm)
+The algorithm defined there is:
+1. Mark every node as unvisted
+2. Mark each node as having infinite cost to reach it, except for one node, which will be our initial node and have zero cost.
+3. For the current node, consider all of their tentative distances and costs. Then compare that distance to whatever the current assigned value is. If it is a new minmimum, redefine the cost. Otherwise, stick wih the existing cost.
+4. When done, mark it as visited
+5. If our destination has been marked, or the smallest remaining tentative distance is infinity, stop.
+6. Otherwise, choose the closest unvisisited node, mark it as current, and go back to step 3.
+
 ## Acylcic Graphs
+For acyclic graphs the runtime is O(|E|+|V|), and djakastra can be implemented with topological sort.
+
 ## Bellman Ford
+Another shortest path algorithm, it is slower than djakastra's, but can handle negative edge weights.  
+For every vertice, relax each and every edge.
