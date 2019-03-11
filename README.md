@@ -352,16 +352,31 @@ This works since the when union is performed, the depth only increases if its ro
 While performing find, take all pointers on the access path to the root, and just repoint the pointers to the root.
 ## Inverse Ackermann
 One find can still be O(logn), but future finds now run in O(\invackerman(f,u)) which is essentially constant time.
+
 # Mininum Spanning trees
 ## Why?
-## Requirements
+Sometimes we want to know what the smalles possible tree is between some nodes.
 ## Cut Theorem & Greedy Algorithms
+For any given cut, the lowest weight edge crossing the cut must be in the minimum spanning tree. If there is a tie, each one is in *a* minimum spanning tree.
 ## Prim's Algorithm
+Keep adding the cheapest edge joining a node to another vertex.
 ## Kruskal's Algorithm
+Given some start vertice, just add cheapest edges, and make sure there are no cycles. Keep adding cheapest edges until there are no unreachable nodes or we run out of edges.
+
 # Shortest Path
 ## Structural Properties
+- Prefixes of shortest paths are shortest paths
+- A shortest path does not always exist
+- A shortest path tree does always exist
+
 ## Djkstra
 ### Some quotations of his on lecture slides which are fun
+- "The use of COBOL cripples the mind; its teaching should, therefore, be regarded as a criminal offense."
+- "It is practically impossible to teach good programming to students that have had a prior exposure to BASIC: as potential programmers they are mentally mutilated beyond hope of regeneration."
+- "About the use of language: it is impossible to sharpen a pencil with a blunt axe. It is equally vain to try to do it with ten blunt axes instead."
+- "Object-oriented programming is an exceptionally bad idea which could only have originated in California."
+
 ### Algorithm
+Given arbitary non-negative edge weights.
 ## Acylcic Graphs
 ## Bellman Ford
