@@ -358,6 +358,7 @@ One find can still be O(logn), but future finds now run in O(\invackerman(f,u)) 
 Sometimes we want to know what the smalles possible tree is between some nodes.
 ## Cut Theorem & Greedy Algorithms
 For any given cut, the lowest weight edge crossing the cut must be in the minimum spanning tree. If there is a tie, each one is in *a* minimum spanning tree.
+Greedy algorithim usually work, thought they're not always the most effecient.
 ## Prim's Algorithm
 Keep adding the cheapest edge joining a node to another vertex.
 ## Kruskal's Algorithm
