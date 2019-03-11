@@ -261,26 +261,74 @@ Assign charges to operations, some more or less than the true cost. The data str
 Imaging potential energy in physics, and essentially as operations occur they can increase or decrease the potential energy of the structure. This relies on the intelligent defining of some sort of consistent state-based potential function to utilize. The potential of a DS ust be measured in a consistent manner.
 # Graphs
 ## What's a graph?
+A graph is a way of having a ton of distributed data points to each other and demonstrate correlations between data points.
+Imagine a traffic diagram between cities, the cities would be the vertices, and roads would be the edges. Or we can imagine some hell of a node projects with hundreds of modules, all requiring some sort of version dependency between themselves. Or Facebook mapping friend networks, or LinkedIn showing how far a potential connection is from your circle.
 ### Vertices
+A vertice is another name for a node, and holds some sort of data.
 ### Edges
+An edge is a connection between two vertices. Edges can have weight and direction. Weight represents the path cost, and direction is literal.
 ### Directed vs Undirected
-## Examples
+A directed graph has edges which have a fixed direction of travel. An undirected graph is a graph where you can go back and forth on any given edge. Any undirected graph can be represented as a directed graph, but with twice the number of edges.
 ## Representations of graphs
+There are two common ways to represent a graph.
+1. An adjacency matrix, also known as hell on earth, requires O(V^2) space to hold a graph. Each directed edge s shown as an 'x' on two vertices row and column in a matrix. For any number of vertices greater than 5 this is ridiculous and ineffecient.
+2. An adjacency list liss all valid vertices, and the following edges between them. This is significantly more effecient, and only takes O(|E|) space.
+
 ## Paths
+A path is a route taken along edges between 2 vertices. You can of course have a path between n vertices, but what matters is the last two and the corresponding edges you took to get there. Such edges have a corresponding weight, and one can caluclate a path weight from this.  
+Paths can also be cyclic if they have the same first and last vertice.
 ## Minimally Connect Graph = Tree
+A minimally connected graph is a graph without cycles. It can also be represented as a tree. We can also name some random node as a root to more easily represent such a graph.
 ## ST Connectivity
+This is a common question asking given some node s and another t, is there a path between the two?
 ## Connected Components
+A simalair question: Given a node, what are all of the reachable nodes? The set of elements that follows contains all connected components.
 ## Breadth First Search (BFS)
+We essentially start at a node, then explore, and keep track of where we have visited. Each node that we visit will get a level number, which is defined as how far a given node is from the start node s. Any neighbr of s, for example, would be on level 1. Exploring in this fashion will result in a BFS tree. We know there is a path between s and t if t shows up in the BFS tree.  
+O(|V|+|E|)
 ## Depth First Search (DFS)
+Starting at s, take the first edge and continue recursively until we hit a dead end. Backtrack until we get to a node with an explored neigbor, explore. This method goes deep, then backtracks as necessary. As one progresses through the graph, we keep track of nodes we have visited and add such nodes to a DFS tree. If we have already seen said element, then we mark them in the DFS tree as having a back-edge between the two nodes. This represents some sort of bi-cnnectivity.  
+O(|V|+|E|)  
+Fun facts:
+1. "For a recursive call DFS(u), all nodes that are marked *explored* between the invocation and the end of the recursive call are descendants of u in T."
+2. "Let T be a DFS tree, let x, y be two nodes in T that have an edge between them in G, but (x, y) is not an edge of T. Then, one of x or y is an ancestor of the other."2
+
 ## BiPartititeness
+A graph is bipartite if it can be partitioned into two categories and perfectly two-colored.
+![bi-partite example image](http://www.csie.ntnu.edu.tw/~u91029/BipartiteGraph1.png)
+Turns out a graph G is bipartite if and only if it does not contain an odd-length cycle.
 ### N-Colorable
+Same idea, but now instead of 2 colors, what about N colors?
 ## Bi-Connectivity
+A graph is bi-connected i we must delete at least two nodes to get rid of a given node.
 ### Why?
+This is important if we are trying to keep safe references to some data, or ensure that it is easil accesible in a multitude of fashions. Or if we are a mapping application searching for alternate routes to a destination due to a route closure.
 ### Articulation Point
+An articultation point is a single node where we can remove said node and split a graph.
+### How to check
+You can check for Bi-Connectivity and find articulation points by applying the Hopcroft-Tarjan algo: Run a DFS while keeping track of the position of each order in the DFS tree, and the lowesy number reachable vertex from every vertex. Low is defined by min(Num(v),{Num(W) : (u,w) being a backedge for a descendant u of v}). We can caulculate all low values in linear time.
+Any given node is an articulation point if
+1. The root is an articulation point if it has more than one child
+2. Any non-root node v is an articulation point if it has a child w where the low(w) >= num(v).
+
 ## Topological Sort
+Let's say we want an ordering in which you have a directed acyclig graph (dag) and you need to find an ordering for all nodes to be done such that all dependencies are respected. For every edge you want the nodes to be perfectly in order, and to point from smaller nodes to larger nodes.
 ### Why?
+This matter for dependency generation and other mapping applications. Easy to come up with examples, just think about it.
 ### Forming a topological ordering
+1. Compute all vertices incoming edges, queue all those with zero.
+2. Pick a vertex from the queue, schedule it.
+3. For each adjacent vertex, decrement its incomind edges and add each adjacent vertex to the quesue if it has 0 incoming edges.
+O(n+m)
+
 ## Strong Bi-Connectivity
+If we have a path from u to v and from v to u. This matter for directed graphs as we may not always have a path back.  
+How do we check this?
+1. Perform a DFS
+2. Number the vertices in post-order, as their recursive calls finish
+3. Construct the reverse graph, flip all edge directions
+4. Perform a second DFS from the highest number vertex, output each subtree, and remove it from the graph.
+
 # Applications of DFS
 # Union Find Data Structure
 ## Background
