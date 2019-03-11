@@ -189,15 +189,23 @@ If it has a single child, then just get delete the node and relink the child to 
 Replace it with the smallest node in the right subtree of X, and delete said node.  
 or: the largest node in the left subtree, and delete said node. 
 ### Other details
-In the worst case, a BST can have a height equal to a linked list.
-
+In the worst case, a BST can have a height equal to a linked list.  
+The internal path length is usually O(nlogn) as well.
 # Balanced Search Trees
 ## Why?
+Sometimes we actually need a decent tree. Having a balanced tree is fundementally important to accessing elements in a consistent manner.
 ## AVL Trees
-### Why?
+Gaurenteed O(logN) worst case for insert/delete operations.
 ### How? (AVL rules)
+AVL Trees require that the heights of its children can differ by at most 1.
 ### Height properties
+- An empty subtree has a height of -1.
+- The height of a tree is 1+max(height(left), height(right))
+- The height is consistently O(logN)
+- The height is bounded by ![equation](https://latex.codecogs.com/gif.latex?1.44*log(n&plus;2)
+
 ### Tree Rotations
+
 #### Why?
 #### Single Rotations
 ##### When?
