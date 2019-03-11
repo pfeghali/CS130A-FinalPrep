@@ -224,20 +224,41 @@ Find the element, delete it, adjust tree height, rotate.
 Everything is O(logN)!
 # Splay Trees
 ## Why?
+AVL is hard, we don't want to have to do a bunch of confusing work for our tree to work.
 ## Splaying
+Rather than have some confusing rules for the tree, lets just 'splay' the tree on every access. Essentially just keep splaying at some sort of a node until said node becomes root! This method is O(logN), and will ensure that the tree stays balanced! To splay, there a few different types of roations that must be considered.  
+Splying also has the side benefit of roughly halving the depth of all nodes along the access path.
 ### Zig
+This case is valid when the parent of a node is the root. Just apply the single rotation we mentioned earlier:
+![zig rotation diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Splay_tree_zig.svg/1418px-Splay_tree_zig.svg.png)
 ### Zig-Zig
+This is the case if the parent of a node is not the root and the node and the parent of the node are both left or both right children:
+![zig-zig rotation diagram](https://upload.wikimedia.org/wikipedia/commons/f/fd/Zigzig.gif)
 ### Zig-Zag
+This is the case if the parent of a node is not the root and the node and the parent of the node are alternating children:
+![zig-zag rotation diagram](https://upload.wikimedia.org/wikipedia/commons/6/6f/Zigzag.gif)
 ## Access
+Access returns a pointer to the item it is searching for, and if it is unavailable it returns a null pointer. We search from the root fown, and if we find it, splay at the node. If we reach a null node, then splay at the last accessed node.
 ## Join
+Join combines two trees into a tree and returns the resulting tree, assuming that all elements in the first tree are smaller than the second. First access the largest item in the first tree, then make the second tree the root's right child.
 ## Split
+Split returns two trees, one of which has all of the elements less than or equal to the requested element, and a second of which has all of the items which are greater than it. First do access for the element, if the root > x, break the left child, otherwise break the right child.
 ## Insert
+Insert the element into the tree by performing split, then making a new tree with the element as the root and subtrees from the split.
 ## Delete
+Access the element, delete root, join the two remaining subtrees.
+## Complexity
+Any m operations takes O(m log N)
 # Amortized Analysis
 ## Why?
+Sometimes one or two operations can b expensive, but super cheap down the line.
+If the total cost of N operations is T(N), then the amortized cost of each of those N operations is T(N)/N
 ## Aggregate Method
+Basically just consider the number of operations that occur for a cycle, add them up intelligently, and check what your true per operation cost it.
 ## Accounting Method
+Assign charges to operations, some more or less than the true cost. The data structure acrues credit, which can pay for amoritized cost down the line. Choose costs carefully so that the credit of such operations is never negative.
 ## Potential Method
+Imaging potential energy in physics, and essentially as operations occur they can increase or decrease the potential energy of the structure. This relies on the intelligent defining of some sort of consistent state-based potential function to utilize. The potential of a DS ust be measured in a consistent manner.
 # Graphs
 ## What's a graph?
 ### Vertices
