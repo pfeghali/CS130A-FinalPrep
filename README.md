@@ -378,7 +378,7 @@ Given some start vertice, just add cheapest edges, and make sure there are no cy
 - "Object-oriented programming is an exceptionally bad idea which could only have originated in California."
 
 ### Algorithm
-The algorithim is designed to be a shortest path first algorithm. It is commonly designed to be an effecient algo for finding the path between two nodes. The algorithm requires arbitary non-negative edge weights, and a strict weak ordering. I like the wikipedia explanation of the algorithm, the page is quite good: ![wikipedia djakastra](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Algorithm)
+The algorithim is designed to be a shortest path first algorithm. It is commonly designed to be an effecient algo for finding the path between two nodes. The algorithm requires arbitary non-negative edge weights, and a strict weak ordering. I like the wikipedia explanation of the algorithm, the page is quite good: [wikipedia djakastra](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Algorithm)
 The algorithm defined there is:
 1. Mark every node as unvisted
 2. Mark each node as having infinite cost to reach it, except for one node, which will be our initial node and have zero cost.
@@ -386,6 +386,9 @@ The algorithm defined there is:
 4. When done, mark it as visited
 5. If our destination has been marked, or the smallest remaining tentative distance is infinity, stop.
 6. Otherwise, choose the closest unvisisited node, mark it as current, and go back to step 3.
+
+Naively, the optimal runtime is O(|V|^2).  
+When implemented with a binary heap: O(E*log(|V|))
 
 ## Acylcic Graphs
 For acyclic graphs the runtime is O(|E|+|V|), and djakastra can be implemented with topological sort.
