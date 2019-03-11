@@ -10,6 +10,7 @@ Please email me if you'd like something updated or changed.
 ---
 ##### *All code blocks are mine's unless otherwise noted, and might have errors/be suboptimal. I prefer python to C++, and I will be using pseudocode. This will also NOT cover probability and amortized analysis. Other documents and references will be linked to, and a substantive amount of material has been derived from the [course's site](https://www.cs.ucsb.edu/~suri/cs130a/cs130a.html).*
 ---
+
 # Data Structures and Algorithms
 ## What is a data structure?
 A data strcuture is some sort of form which holds data in a (usually) intelligent manner. DS allow for optimized operations on data, and usually are built to have strong bounds on worst case complexity. DS are fundementally important to CS, since the movement, access, analysis, and computation based on data is a lot of what CS is.
@@ -24,7 +25,7 @@ This one is pretty interesting. Big\theta represents some sort of a function tha
 You have a program that's running, and it needs to store data while running. How much does it need (other than the input)? Does it need to store extraneous data for each element? O(N). Does it need to store linkage information between every single element and every other element in the input? O(N^2).
 ## Useful series expansions
 ## Useful complexities
-<!-- ![equation](https://latex.codecogs.com/gif.latex?10x)-->
+
 # Hashing
 Hashing is one of the most useful processes in Computer Science. Need to sort an arbitarily long string of input? Or how about find a substring in O(N)? Store tons of user data easily? Hashtables are generally just great ways to manipulate, store, and interact with data. They're not perfect though.
 Just as a general note, picking a relatively prime table size is usually optimal.
@@ -123,6 +124,7 @@ We can use the rule that any node's parent is its own index/2, its left child is
 We can use such a DS to sort elements. Take your input, and insert every element into the heap - O(n\*log(n)), then pop them all. *Magic!*
 ## Build Heap in O(N)
 Rather than constructing the tree in an arbitrary manner, start with a random array, start halfway through, and run to the root, running percolate down. This will build a heap in O(N)!
+
 # d-Heaps and Leftist Heaps
 ## What is a D-Heap?
 Binary heaps have two children, but there is a case to be made for more children. Having a wider node structure rather than a deep structure can help optimize different kinds of operations.
@@ -131,7 +133,6 @@ Binary heaps have two children, but there is a case to be made for more children
  - deleteMin ![equation](https://latex.codecogs.com/gif.latex?O\(d&space;log_d&space;n\))
 
 By using these two properties, we can optimize the tree for our particular use case.
-
 ## Leftist Heap
 A leftist heap is a heap-ordered binary tree where the NPL(leftChild) >= NPL(rightChild) for every node.
 ### Why?
@@ -145,23 +146,51 @@ NPL(X) = length of right path from X.
 - DeleteMin - Delete the root, and merge the children
 
 All operations are O(log(N))
-
 ### Merge
 Assume the root of H1 is <= root of H2. Recursively merge H2 with the right child of H1, and make the result the new right child of H1. Then swap the left and right children of H1 to keep the leftist property. 
+
 # Search Trees
-## Operations & Complexities
+Search trees exist to help search over an ordered universe. Sometimes we need a certain amount of hierarchal data returned in an effecient manner.  
+With a search tree, we have a set of nodes which can be reached by some sort of path. This path is made up of edges, and the number of edges it takes from A to B is the path length. The depth of a node is defined by the number of edges between it and the root.
 ## Traversal
+Traversals allow us to visit all of the elements in a tree in some sort of order.
 #### PreOrder Traversal
+Preorder traversal:
+1. Visit the root
+2. Go to left subtree, and call preorder(leftSub)
+3. Go to right subtree, and call preorder(rightSub)
+
 #### PostOrder Traversal
+Postorder traversal:
+1. Go to left subtree, and call Postorder(leftSub)
+2. Go to right subtree, and call Postorder(rightSub)
+3. Visit the root
+
 ## Binary Search Trees
 ### Properties
+Each node has at most two children. For any given node, the left children/subtree will always be less than the key, and the right children/subtree will always be greater than the key.
 ### Operations
+(I'm not going to go through a few of these)
+- Find()
+- Insert()
+- Delete()
+- FindMin()
+- FindMax()
+
 ### How does insert(e) work?
+First ru find and see if the node exists, if not, insert X at the last spot seen on the path.
 ### How does delete(e) work?
+Delete gets messy.
 #### e is a leaf
+If it is a leaf, then just delete it.
 #### e has one child
+If it has a single child, then just get delete the node and relink the child to the parent.
 #### e has two children
+Replace it with the smallest node in the right subtree of X, and delete said node.  
+or: the largest node in the left subtree, and delete said node. 
 ### Other details
+In the worst case, a BST can have a height equal to a linked list.
+
 # Balanced Search Trees
 ## Why?
 ## AVL Trees
