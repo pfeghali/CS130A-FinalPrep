@@ -202,19 +202,26 @@ AVL Trees require that the heights of its children can differ by at most 1.
 - An empty subtree has a height of -1.
 - The height of a tree is 1+max(height(left), height(right))
 - The height is consistently O(logN)
-- The height is bounded by ![equation](https://latex.codecogs.com/gif.latex?1.44*log(n&plus;2)
+- The height is bounded by ![equation](https://latex.codecogs.com/gif.latex?1.44*log{n&plus;2})
 
 ### Tree Rotations
-
+Tree rotations structurally change the tree on access operations.
 #### Why?
+By implementing these simple rotations for insert, delete, and search, we can enforce the AVL properties by consistently restructuring affected portions of the tree.
+#### Rebalancing overview
+An imbalance occurs either due to:
+1. Insertion into the left subtree of the left child of a node that needs rebalancing, or the right subtree of the right child.
+2. Insertion into the left subtree of the right child of a node that needs rebalancing, or the right subtree of the left child.
+
+1 is fixed with a single rotation, and 2 with a double rotation.
 #### Single Rotations
-##### When?
-##### How?
-#### Double Rotations?
-##### When?
-##### How?
+![single rotation diagram](https://upload.wikimedia.org/wikipedia/commons/2/23/Tree_rotation.png)
+#### Double Rotations
+![double rotation diagram](http://pages.cs.wisc.edu/~siff/CS367/Notes/AVLs/double-after.gif)
 ### Removal
+Find the element, delete it, adjust tree height, rotate. 
 ### Complexity Bounds
+Everything is O(logN)!
 # Splay Trees
 ## Why?
 ## Splaying
