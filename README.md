@@ -56,8 +56,14 @@ With this table approach, ourtable size can reach a maximum. If the table fills,
 ### Chained Hashing
 Chained hashing attempts to solve these problems by accepting collisions and just adding elements to the end of some sort of a list as they collide. This approach allows for elemeents to be easily inserted without worrying about trying to find a valid slot. This approach isn't perfect, as if n eleents all hash to slot i, then access is O(N). Albeit, same issue as the other approaches, but now we can make insert consistently O(1).
 ## Choosing a hash function
+Selecting a hash function is a hard problem, as for any preselected hash function we need to minimize a user finding a hash function which will cause an adversial set of elements to hash to the same location. In addition, hash functions must consistently distribute elements evenly across table sizes. Since for any set function we can easily form any type of adversial set, we must somehow manage to remove this possibility.
 ## Randomization
+What if rather than having a set hash function, we have a hash function that even the programmer does not know until table initialization? By allowing for hash function randomization, we can have consistent tables without worrying about a user preselecting an adversial set of inputs.
 ## Universal hash functions
+Such random hash functions are known as universal hash functions, and are defined in the form ![equation](https://latex.codecogs.com/gif.latex?h(x)&space;=&space;rand(m\in&space;\{1,...,M-1\})*x_1&plus;...&plus;rand(m\in&space;\{1,...,M-1\})*x_n)
+These hash functions can be proven to have collisions at a rate of 1/M, with M being the table size. Great!
+## Matrix method
+Rather than choosing integer coeffecients, we can also choose a random binary matrix, of size b\*u, with b being the coeffecient of the table size (M = 2^b) and u being the number of bits in the input. This method s similar to the last, where we take this new hash 'function' and is of the same linearly multiplicative form.
 ## Birthday paradox (in a lazy form)
 ## Perfect hashing
 # Priority Queues
