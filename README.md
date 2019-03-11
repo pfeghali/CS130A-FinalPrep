@@ -332,14 +332,26 @@ How do we check this?
 # Applications of DFS
 # Union Find Data Structure
 ## Background
+Lets say you have a bunch of disjoint sets. Each element is contained in a single set.
 ### A set of sets
+This data structure is essentially a massive set of sets, where elements shift between sets to help optimize their retreival.
 ## Basic Operations
+With the union find stucture we focus on two operations
+- `setName find(element)`
+- `union(set1, set2)`
+
 ## Quick Find
+Imagine some sort of an array for N elements, of size N. Find is just lookup element I, so O(1), but union requires access and checking, so O(N).
 ## Quick Union
+Each set is a tree, and you find elements by following parent pointers to the root. Finding is hard in this case, O(N), but union is imeediate since we're just moving pointers around, O(1).
 ## Smart Union
+Now let's have the union just make smaller trees point to the bigger tree's root. This keeps the tree's height relatively short.
 ### Why does this work?
+This works since the when union is performed, the depth only increases if its root becomes a new child. If the depth increases, then its new tree size must be > 2\*oldTreeSize. This means that find is now O(logN), and union is O(1).
 ## Path Compression
+While performing find, take all pointers on the access path to the root, and just repoint the pointers to the root.
 ## Inverse Ackermann
+One find can still be O(logn), but future finds now run in O(\invackerman(f,u)) which is essentially constant time.
 # Mininum Spanning trees
 ## Why?
 ## Requirements
