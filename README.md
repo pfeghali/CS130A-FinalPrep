@@ -125,13 +125,29 @@ We can use such a DS to sort elements. Take your input, and insert every element
 Rather than constructing the tree in an arbitrary manner, start with a random array, start halfway through, and run to the root, running percolate down. This will build a heap in O(N)!
 # d-Heaps and Leftist Heaps
 ## What is a D-Heap?
+Binary heaps have two children, but there is a case to be made for more children. Having a wider node structure rather than a deep structure can help optimize different kinds of operations.
 ### Operations
-### Complexity
+ - insert ![equation](https://latex.codecogs.com/gif.latex?O\(log_d&space;n\))
+ - deleteMin ![equation](https://latex.codecogs.com/gif.latex?O\(d&space;log_d&space;n\))
+
+By using these two properties, we can optimize the tree for our particular use case.
+
 ## Leftist Heap
+A leftist heap is a heap-ordered binary tree where the NPL(leftChild) >= NPL(rightChild) for every node.
 ### Why?
+Sometimes we need to do more than just have two heaps, we need to merge them. Imagine a system running a job on two nodes, and for whatever reason one drains. Assuming it somehow has a failure script, the scheduled jobs and processes on the failed node now must to be merged onto the other machine. This problem of merging two heaps quickly s solved by leftist heaps.
 ### Null Path Length (NPL)
+Null Path Length is defied as the shortest path between X and a null pointer.  
+NPL(X) = length of right path from X.
 ### Operations
+- Merge - Defined below
+- Insert - Create a single node heap and marge the children.
+- DeleteMin - Delete the root, and merge the children
+
+All operations are O(log(N))
+
 ### Merge
+Assume the root of H1 is <= root of H2. Recursively merge H2 with the right child of H1, and make the result the new right child of H1. Then swap the left and right children of H1 to keep the leftist property. 
 # Search Trees
 ## Operations & Complexities
 ## Traversal
