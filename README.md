@@ -351,7 +351,13 @@ This works since the when union is performed, the depth only increases if its ro
 ## Path Compression
 While performing find, take all pointers on the access path to the root, and just repoint the pointers to the root.
 ## Inverse Ackermann
-One find can still be O(logn), but future finds now run in O(\invackerman(f,u)) which is essentially constant time.
+One find can still be O(logn), but future finds now run in O(\invackerman(f,u)) which is essentially constant time.  
+I enjoyed learning about this function, so here is the start of the normal Ackermann function from [Wikipedia](https://en.wikipedia.org/wiki/Ackermann_function#Table_of_values), since OEIS had an unsatisfactory sequence:
+1. 0 = 1
+2. 1 = 3
+3. 2 = 7
+4. 3 = 61
+5. 4 = 2^2^65536 - 3 (excel refused to compute it, but python managed! - though not going to dump it..)
 
 # Mininum Spanning trees
 ## Why?
@@ -390,7 +396,7 @@ The algorithm defined there is:
 Naively, the optimal runtime is O(|V|^2).  
 When implemented with a binary heap: O(E*log(|V|))
 
-## Acylcic Graphs
+## Acyclic Graphs
 For acyclic graphs the runtime is O(|E|+|V|), and djakastra can be implemented with topological sort.
 
 ## Bellman Ford
