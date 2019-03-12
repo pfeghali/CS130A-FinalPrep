@@ -24,6 +24,12 @@ This one is pretty interesting. Big\theta represents some sort of a function tha
 ## Space Complexities
 You have a program that's running, and it needs to store data while running. How much does it need (other than the input)? Does it need to store extraneous data for each element? O(N). Does it need to store linkage information between every single element and every other element in the input? O(N^2).
 ## Useful series expansions
+- Consider the sum of elements from 1-n. The sum is equivalent to (n(n-1))/2, and runs in O(N^2)
+- Consider the sum of the square of elements from 1-n. The sum is equivalent to (n(n+1)(2n+1))/6, and runs in O(N^3)
+- The sum of elements 1-n to the 'r'th power runs in order O(N^(r+1))
+- the sum of n elements to a changing term varying from 1-k (e.g: n^1+n^2+n^3) runs in O(N^K)
+- the sum of the inverse of n elements is O(ln(N))
+
 ## Useful complexities
 
 # Hashing
