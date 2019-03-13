@@ -237,13 +237,13 @@ AVL is hard, we don't want to have to do a bunch of confusing work for our tree 
 Rather than have some confusing rules for the tree, lets just 'splay' the tree on every access. Essentially just keep splaying at some sort of a node until said node becomes root! This method is O(logN), and will ensure that the tree stays balanced! To splay, there a few different types of roations that must be considered.  
 Splying also has the side benefit of roughly halving the depth of all nodes along the access path.
 ### Zig
-This case is valid when the parent of a node is the root. Just apply the single rotation we mentioned earlier:
+This case is valid when the parent of a node is the root. Just apply the single rotation we mentioned earlier:  
 ![zig rotation diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Splay_tree_zig.svg/1418px-Splay_tree_zig.svg.png)
 ### Zig-Zig
-This is the case if the parent of a node is not the root and the node and the parent of the node are both left or both right children:
+This is the case if the parent of a node is not the root and the node and the parent of the node are both left or both right children:  
 ![zig-zig rotation diagram](https://upload.wikimedia.org/wikipedia/commons/f/fd/Zigzig.gif)
 ### Zig-Zag
-This is the case if the parent of a node is not the root and the node and the parent of the node are alternating children:
+This is the case if the parent of a node is not the root and the node and the parent of the node are alternating children:  
 ![zig-zag rotation diagram](https://upload.wikimedia.org/wikipedia/commons/6/6f/Zigzag.gif)
 ## Access
 Access returns a pointer to the item it is searching for, and if it is unavailable it returns a null pointer. We search from the root fown, and if we find it, splay at the node. If we reach a null node, then splay at the last accessed node.
