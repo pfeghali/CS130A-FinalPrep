@@ -113,7 +113,7 @@ Percolate up is an operation whch is used for both decreaseKey and insert.
 `percolateUp()` continously swaps itself and its parent if its key is less than (or whatever ordering rule) than its parent. 
 ### Percolate Down
 Percolate down is an operation whch is used for both increaseKey and deleteMin.  
-`percolateDown()` continously swaps itself and its parent if its key is more than (or the inverse of whatever ordering rule) than its parent. 
+`percolateDown()` continously swaps itself and its children if its key is more than (or the inverse of whatever ordering rule) than its children. 
 ### DecreaseKey
 This function requires that you know where the element is, since there is no find.  
 Just decrease the element's key, then call PercolateUp.
