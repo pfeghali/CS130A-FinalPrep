@@ -331,7 +331,7 @@ O(n+m)
 
 ## Strong Bi-Connectivity
 If we have a path from u to v and from v to u. This matter for directed graphs as we may not always have a path back.  
-How do we check this?
+How do we check this? (Kosaraju-Sharir)
 1. Perform a DFS
 2. Number the vertices in post-order, as their recursive calls finish
 3. Construct the reverse graph, flip all edge directions
