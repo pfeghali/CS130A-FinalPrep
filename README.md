@@ -31,6 +31,7 @@ You have a program that's running, and it needs to store data while running. How
 - the sum of the inverse of n elements is O(ln(N))
 
 ## Useful complexities
+N! ~ O(N^N)
 
 # Hashing
 Hashing is one of the most useful processes in Computer Science. Need to sort an arbitarily long string of input? Or how about find a substring in O(N)? Store tons of user data easily? Hashtables are generally just great ways to manipulate, store, and interact with data. They're not perfect though.
@@ -137,6 +138,7 @@ Binary heaps have two children, but there is a case to be made for more children
 ### Operations
  - insert ![equation](https://latex.codecogs.com/gif.latex?O\(log_d&space;n\))
  - deleteMin ![equation](https://latex.codecogs.com/gif.latex?O\(d&space;log_d&space;n\))
+ The formulated optimization for D is D = max(M/N, 2)
 
 By using these two properties, we can optimize the tree for our particular use case.
 ## Leftist Heap
