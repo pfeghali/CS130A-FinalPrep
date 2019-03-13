@@ -13,9 +13,9 @@ Please email me if you'd like something updated or changed.
 
 # Data Structures and Algorithms
 ## What is a data structure?
-A data strcuture is some sort of form which holds data in a (usually) intelligent manner. DS allow for optimized operations on data, and usually are built to have strong bounds on worst case complexity. DS are fundementally important to CS, since the movement, access, analysis, and computation based on data is a lot of what CS is.
+A data strcuture is some sort of form which holds data in an (usually) intelligent manner. DS allow for optimized operations on data, and usually are built to have strong bounds on worst case complexity. DS are fundementally important to CS, since the movement, access, analysis, and computation based on data is a lot of what CS is.
 ## Worst case bounding (BigO)
-When we're building a data strucutre, we want to have strcutures which allow for fast operations with millions of elements. We can analyze how something will scale using BigO analysis.  
+When we're building a data strucutre, we want to have strcutures which allow for fast operations with millions of elements. We can analyze how something will scale by using BigO analysis.  
 For example, consider: ![equation](https://latex.codecogs.com/gif.latex?10x^2&plus;5x-34\rightarrow&space;O(N^2)). With BigO analsis we ignore all extranneous coeffecients, and just argue that the function scales according to N^2.
 ### What about Big\omega?
 Big\omega is a representation of the lower bound of a function as N approaches infinity. We can also consider BigO as the upper bound of such a function as N approaches infinity. This usually is not very interesting.
@@ -27,7 +27,7 @@ You have a program that's running, and it needs to store data while running. How
 - Consider the sum of elements from 1-n. The sum is equivalent to (n(n-1))/2, and runs in O(N^2)
 - Consider the sum of the square of elements from 1-n. The sum is equivalent to (n(n+1)(2n+1))/6, and runs in O(N^3)
 - The sum of elements 1-n to the 'r'th power runs in order O(N^(r+1))
-- the sum of n elements to a changing term varying from 1-k (e.g: n^1+n^2+n^3) runs in O(N^K)
+- Consider n elements with a changing term varying from 1-k (e.g: n^1+n^2+n^3) runs in O(N^K)
 - the sum of the inverse of n elements is O(ln(N))
 
 ## Useful complexities
