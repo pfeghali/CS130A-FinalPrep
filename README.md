@@ -303,7 +303,7 @@ Fun facts:
 
 ## BiPartititeness
 A graph is bipartite if it can be partitioned into two categories and perfectly two-colored.
-![bi-partite example image](http://www.csie.ntnu.edu.tw/~u91029/BipartiteGraph1.png)
+![bi-partite example image](http://www.csie.ntnu.edu.tw/~u91029/BipartiteGraph1.png)  
 Turns out a graph G is bipartite if and only if it does not contain an odd-length cycle.
 ### N-Colorable
 Same idea, but now instead of 2 colors, what about N colors?
