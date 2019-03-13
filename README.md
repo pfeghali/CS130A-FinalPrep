@@ -279,7 +279,7 @@ An edge is a connection between two vertices. Edges can have weight and directio
 A directed graph has edges which have a fixed direction of travel. An undirected graph is a graph where you can go back and forth on any given edge. Any undirected graph can be represented as a directed graph, but with twice the number of edges.
 ## Representations of graphs
 There are two common ways to represent a graph.
-1. An adjacency matrix, also known as hell on earth, requires O(V^2) space to hold a graph. Each directed edge s shown as an 'x' on two vertices row and column in a matrix. For any number of vertices greater than 5 this is ridiculous and ineffecient.
+1. An adjacency matrix, also known as hell on earth, requires O(V^2) space to hold a graph. Each directed edge s shown as an 'x' on two vertices row and column in a matrix. For any number of vertices greater than 5 this is ridiculous and ineffecient. This seems to be fantastically useless for development appliactions, except for when you need to do serious analytics on graphs using matrix operations. Getting algabreic variants of a graph becomes substantially easier with a matrix.
 2. An adjacency list liss all valid vertices, and the following edges between them. This is significantly more effecient, and only takes O(|E|) space.
 
 ## Paths
