@@ -8,7 +8,7 @@ There is probably material missing from here, albeit most information should be 
 Do not expect substantive proofs, that's not what this is for.
 Please email me if you'd like something updated or changed.
 ---
-##### *All code blocks are mine's unless otherwise noted, and might have errors/be suboptimal. I prefer python to C++, and I will be using pseudocode. This will also NOT cover probability and amortized analysis. Other documents and references will be linked to, and a substantive amount of material has been derived from the [course's site](https://www.cs.ucsb.edu/~suri/cs130a/cs130a.html).*
+##### *All code blocks are mine unless otherwise noted, and might have errors/be suboptimal. I prefer python to C++, and I will be using pseudocode. This will also NOT cover probability and amortized analysis. Other documents and references will be linked to, and a substantive amount of material has been derived from the [course's site](https://www.cs.ucsb.edu/~suri/cs130a/cs130a.html). Sorry about the typos.*
 ---
 
 # Data Structures and Algorithms
