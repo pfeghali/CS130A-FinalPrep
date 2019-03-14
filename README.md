@@ -308,7 +308,7 @@ Turns out a graph G is bipartite if and only if it does not contain an odd-lengt
 ### N-Colorable
 Same idea, but now instead of 2 colors, what about N colors?
 ## Bi-Connectivity
-A graph is bi-connected i we must delete at least two nodes to get rid of a given node.
+A graph is bi-connected i fwe must delete at least two nodes to get rid of a given node.
 ### Why?
 This is important if we are trying to keep safe references to some data, or ensure that it is easil accesible in a multitude of fashions. Or if we are a mapping application searching for alternate routes to a destination due to a route closure.
 ### Articulation Point
@@ -399,7 +399,7 @@ The algorithm defined there is:
 3. For the current node, consider all of their tentative distances and costs. Then compare that distance to whatever the current assigned value is. If it is a new minmimum, redefine the cost. Otherwise, stick wih the existing cost.
 4. When done, mark it as visited
 5. If our destination has been marked, or the smallest remaining tentative distance is infinity, stop.
-6. Otherwise, choose the closest unvisisited node, mark it as current, and go back to step 3.
+6. Otherwise, choose the smallest unvisisited node, mark it as current, and go back to step 3.
 
 Naively, the optimal runtime is O(|V|^2).  
 When implemented with a binary heap: O(E*log(|V|))
