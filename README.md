@@ -84,6 +84,9 @@ So hash tables aren't perfect, we don't get O(1) access all the time. How can we
 
 This may seem like a solution with N^2 space complexity, but it is a O(N) space solution.
 
+#### EDIT @ 2020
+Linear probing is actually quite effective due to cache performance. Effectively, with a 5-wise indep hash function (such as simple tabulation), we can achieve O(1) perf. Just keep your table at roughly 2\*n space!
+
 # Priority Queues
 ## Why?
 Sometimes we need to know what is next in some sort of an ordering. Imagine some sort of a scheduler, or trying to get the absolute minimum element from sort of continuously fed DS. Doesn't matter, what does matter, is that you have some set ordering rule, and you want to get the thing that obeys said rule the most in order.
