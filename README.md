@@ -85,7 +85,7 @@ So hash tables aren't perfect, we don't get O(1) access all the time. How can we
 This may seem like a solution with N^2 space complexity, but it is a O(N) space solution.
 
 #### EDIT @ 2020
-Linear probing is actually quite effective due to cache performance. Effectively, with a 5-wise indep hash function (such as simple tabulation), we can achieve O(1) perf. Just keep your table at roughly 2\*n space!
+Linear probing is actually quite effective due to cache performance. Effectively, with a 5-wise indep hash function (such as simple tabulation), we can achieve O(1) perf. Just keep your table at roughly 2\*n space! This has been tested in comparison to Python Dicts, and sees a performance improvement of roughly 10% on both sequential and random R/W when implemented in C for Python 3 usage.
 
 # Priority Queues
 ## Why?
